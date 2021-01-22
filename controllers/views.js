@@ -1,4 +1,6 @@
 const fs = require('fs');
+const { awesomeTemplateCSS } = require('../templates/awesomeTemplateCSS');
+const { awesomeTemplateHTML } = require('../templates/awesomeTemplateHTML');
 
 function getFiles (dir, files_){
     files_ = files_ || [];
@@ -18,6 +20,6 @@ exports.displayImages = (folder) => {
 	if(folder!='favicon.ico'){
 		let imagesToDisplay = getFiles('./downloads/'+folder+'/');
 		console.log('imagesToDisplay',imagesToDisplay)
-		return imagesToDisplay;
+		return imagesToDisplay+awesomeTemplateHTML()+awesomeTemplateCSS();
 	}
 }
