@@ -62,23 +62,24 @@ exports.awesomeTemplateCSS = () => {
 			  margin-top: .75rem;
 			}
 
-			/* breweries styles */
-			.breweries {
+			/* the-images styles */
+			.the-images {
 			  padding: 2rem;
 			}
 
-			.breweries > ul {
+			.the-images > ul {
+			  list-style-type: none;
 			  display: grid;
 			  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 			  grid-gap: 1rem;
 			}
 
-			.breweries > ul > li {
+			.the-images > ul > li {
 			  border: 1px solid #E2E2E2;
 			  border-radius: .5rem;
 			}
 
-			.breweries > ul > li > figure {
+			.the-images > ul > li > figure {
 			  max-height: 220px;
 			  overflow: hidden;
 			  border-top-left-radius: .5rem;
@@ -86,31 +87,31 @@ exports.awesomeTemplateCSS = () => {
 			  position: relative;
 			}
 
-			.breweries > ul > li > figure > img {
+			.the-images > ul > li > figure > img {
 			  width: 100%;
 			}
 
-			.breweries > ul > li > figure > figcaption {
+			.the-images > ul > li > figure > figcaption {
 			  position: absolute;
 			  bottom: 0;
 			  background-color: rgba(0,0,0,.7);
 			  width: 100%;
 			}
 
-			.breweries > ul > li > figure > figcaption > h3 {
+			.the-images > ul > li > figure > figcaption > h3 {
 			  color: white;
 			  padding: .75rem;
 			  font-size: 1.25rem;
 			}
 
-			.breweries > ul > li > p {
+			.the-images > ul > li > p {
 			  font-size: 1rem;
 			  line-height: 1.5;
 			  padding: 1rem .75rem;
 			  color: #666666;
 			}
 
-			.breweries > ul > li > a {
+			.the-images > ul > li > a {
 			  padding: .5rem 1rem;
 			  margin: .5rem;
 			}
