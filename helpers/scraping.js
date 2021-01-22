@@ -25,9 +25,14 @@ const getImages = (host, pageURL, folder, body) =>{
 
     // 5. use cheerio's jQuery-style selectors to get all images
     $("img").each(function(i, image) {
-       var imageURL = 'https://'+ host+ $(image).attr('src');
+       let imagePath = $(image).attr('src')
+       console.log('imagePath: ', imagePath)
+       var imageURL = 'https://'+ host+ imagePath;
  	   let timestamp = new Date().getTime();
 
+ 	   if (!fs.existsSync(folder)){
+		    fs.mkdirSync(folder);
+	   }
        downloadImage(imageURL, folder+'/'+timestamp+'.png', function(){
 		  console.log('done');
 	   });
