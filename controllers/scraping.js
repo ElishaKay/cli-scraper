@@ -24,7 +24,11 @@ const getImages = (host, pageURL, folder, body) =>{
     $("img").each(function(i, image) {
        let imagePath = $(image).attr('src')
        console.log('imagePath: ', imagePath)
-       var imageURL = 'https://'+ host+ imagePath;
+       let imageURL = imagePath;
+       if(!imagePath.includes('https')){
+          imageURL = 'https://'+ host+ imagePath;
+       }
+       
    	   let timestamp = new Date().getTime();
        let downloadPath = './downloads/'+folder;
 
@@ -36,14 +40,12 @@ const getImages = (host, pageURL, folder, body) =>{
   	   });
     });
 
-    // 7. and boom! there's our images
+    // and boom! there's our images
     console.log(results);
 }
 
 const downloadImage = (uri, filename, callback)=>{
   request.head(uri, function(err, res, body){
-    console.log('content-type:', res.headers['content-type']);
-    console.log('content-length:', res.headers['content-length']);
     request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
   });
 };
