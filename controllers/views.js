@@ -1,18 +1,23 @@
 const fs = require('fs');
 
-const logFiles = (folder) => {
-	console.log('folder: ',folder)
-	fs.readdir('./downloads/'+folder+'/', (err, files) => {
-	  if(err){
-	  	console.log(`${folder} not found`)
-	  } else {
-	  	files.forEach(file => {
-		    console.log(file);
-	  	});	
-	  }
-	});	
+function getFiles (dir, files_){
+    files_ = files_ || [];
+    var files = fs.readdirSync(dir);
+    for (var i in files){
+        var name = dir + files[i];
+        if (fs.statSync(name).isDirectory()){
+            getFiles(name, files_);
+        } else {
+            files_.push(name);
+        }
+    }
+    return files_;
 }
 
 exports.displayImages = (folder) => {
-	logFiles(folder)
+	if(folder!='favicon.ico'){
+		let imagesToDisplay = getFiles('./downloads/'+folder+'/');
+		console.log('imagesToDisplay',imagesToDisplay)
+		return imagesToDisplay;
+	}
 }
