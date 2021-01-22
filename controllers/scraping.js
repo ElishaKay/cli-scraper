@@ -50,4 +50,4 @@ const downloadImage = (uri, filename, callback)=>{
   });
 };
 
-exports.scrapingHelpers = {getImages, getHTML, downloadImage};
+exports.scraping = {getImages, getHTML, downloadImage};
