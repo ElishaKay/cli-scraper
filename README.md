@@ -2,5 +2,5 @@
 
 Example Command:
 
-scrape https://google.com ./images
+scrape https://google.com images
 

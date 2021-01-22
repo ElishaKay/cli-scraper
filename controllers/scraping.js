@@ -19,23 +19,22 @@ const getHTML = (pageURL, folder) => {
 
 const getImages = (host, pageURL, folder, body) =>{
   	console.log('getImages func ran')		
-  // 4. load the DOM from the response JSON
     let results = [];
     let $ = cheerio.load(body);
 
-    // 5. use cheerio's jQuery-style selectors to get all images
     $("img").each(function(i, image) {
        let imagePath = $(image).attr('src')
        console.log('imagePath: ', imagePath)
        var imageURL = 'https://'+ host+ imagePath;
- 	   let timestamp = new Date().getTime();
+   	   let timestamp = new Date().getTime();
+       let downloadPath = './downloads/'+folder;
 
- 	   if (!fs.existsSync(folder)){
-		    fs.mkdirSync(folder);
-	   }
-       downloadImage(imageURL, folder+'/'+timestamp+'.png', function(){
-		  console.log('done');
-	   });
+   	   if (!fs.existsSync(downloadPath)){
+  		    fs.mkdirSync(downloadPath);
+  	   }
+       downloadImage(imageURL, downloadPath +'/'+timestamp+'.png', function(){
+    		  console.log('done');
+  	   });
     });
 
     // 7. and boom! there's our images
