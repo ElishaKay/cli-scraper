@@ -30,9 +30,8 @@ const getImages = (pageURL, body) =>{
 
     // 5. use cheerio's jQuery-style selectors to get all images
     $("img").each(function(i, image) {
-
-        // 6. resolve absolute URL and add to our results array
-        results.push(url.resolve(page_url, $(image).attr('src')));
+       var imageURL = $(image).attr('src');
+       console.log('imageURL', imageURL)
     });
 
     // 7. and boom! there's our images
