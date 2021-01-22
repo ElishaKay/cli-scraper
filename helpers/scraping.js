@@ -3,7 +3,7 @@ const request = require('request')
 const cheerio = require('cheerio')
 const url = require('url');
 
-const getHTML = (pageURL) => {
+const getHTML = (pageURL, folder) => {
 	request({
 		method: "GET",
 		url: pageURL
@@ -12,12 +12,12 @@ const getHTML = (pageURL) => {
 			console.log('error getting HTML: ',err);
 		} else {
 			let host = response.request.originalHost
-			getImages(host, pageURL, body);
+			getImages(host, pageURL, folder, body);
 		}
 	});
 }
 
-const getImages = (host, pageURL, body) =>{
+const getImages = (host, pageURL, folder, body) =>{
   	console.log('getImages func ran')		
   // 4. load the DOM from the response JSON
     let results = [];
@@ -28,7 +28,7 @@ const getImages = (host, pageURL, body) =>{
        var imageURL = 'https://'+ host+ $(image).attr('src');
  	   let timestamp = new Date().getTime();
 
-       downloadImage(imageURL, timestamp+'.png', function(){
+       downloadImage(imageURL, folder+'/'+timestamp+'.png', function(){
 		  console.log('done');
 	   });
     });

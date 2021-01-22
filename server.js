@@ -14,8 +14,10 @@ const launchCLI = () => {
 						\n`, (command) => {
 	  	console.log('the command is: ', command)
 
-	  	const url = command.split(' ')[1];
-		scrapingHelpers.getHTML(url);
+	  	let userCommands = command.split(' '); 
+	  	const url = userCommands[1];
+		const folder = userCommands[2];
+		scrapingHelpers.getHTML(url, folder);
 		readline.close()
 	})	
 }
