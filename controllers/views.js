@@ -20,6 +20,6 @@ exports.displayImages = (folder) => {
 	if(folder!='favicon.ico'){
 		let imagesToDisplay = getFiles('./downloads/'+folder+'/');
 		console.log('imagesToDisplay',imagesToDisplay)
-		return imagesToDisplay+awesomeTemplateHTML()+awesomeTemplateCSS();
+		return awesomeTemplateCSS()+awesomeTemplateHTML(imagesToDisplay);
 	}
 }
