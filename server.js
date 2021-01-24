@@ -1,6 +1,15 @@
-const path = require('path');
-const { cli } = require('./controllers/cli');
-const { displayImages } = require('./controllers/views');
+const mongoose = require('mongoose')
+require('dotenv').config()
+const path = require('path')
+const { cli } = require('./controllers/cli')
+const { displayImages } = require('./controllers/views')
+
+mongoose
+    .connect(process.env.MONGO_DEV, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false, useUnifiedTopology: true })
+    .then(() => true)
+    .catch(err => {
+        console.log(err);
+    });
 
 //views
 const express = require('express')
@@ -15,4 +24,8 @@ app.get('/:folder', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
   cli.launchCLI();
+   process.on('uncaughtException', function(err) {
+      console.log('Caught exception: ' + err);
+      cli.launchCLI();
+   });
 })
