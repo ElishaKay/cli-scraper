@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 const path = require('path')
 const { cli } = require('./controllers/cli')
-const { displayImages } = require('./controllers/views')
+const imageRoutes = require('./routes/images');
 
 mongoose
     .connect(process.env.MONGO_DEV, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false, useUnifiedTopology: true })
@@ -17,15 +17,9 @@ const app = express()
 const port = 3000
 app.use(express.static(path.join(__dirname, 'downloads')));
 
-app.get('/:folder', (req, res) => {
-  res.send(displayImages(req.params.folder))
-})
+app.use('/', imageRoutes);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
   cli.launchCLI();
-   // process.on('uncaughtException', function(err) {
-   //    console.log('Caught exception: ' + err);
-   //    cli.launchCLI();
-   // });
 })

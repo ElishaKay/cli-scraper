@@ -43,7 +43,8 @@ const getImages = (host, pageURL, folder, body) =>{
        let size = await probe(imageURL);
        console.log('size',size)
        let {width, height, type, length} = size;
-            
+        
+        let downloadedVersion = `/${folder}/${timestamp}.${type}`;    
         let imageFSPath = downloadPath +'/'+timestamp+'.'+type;
 
         console.log('imageFSPath: ',imageFSPath);
@@ -58,7 +59,7 @@ const getImages = (host, pageURL, folder, body) =>{
 
         downloadImage(imageURL, imageFSPath, function(){
           console.log('image File saved in FileSystem');
-          saveImageToDB({url: imageURL, width, height, type, length});
+          saveImageToDB({url: imageURL, folder, downloadedVersion, width, height, type, length});
        });
     });
 
@@ -79,8 +80,8 @@ const downloadImage = (uri, filename, callback)=>{
     .catch((err) => console.error('error saving file',err))
 };
 
-const saveImageToDB = ({url, width, height, type, length}) => {
-  let image = new Image({ url, width, height, type, length });
+const saveImageToDB = ({url, folder, downloadedVersion, width, height, type, length}) => {
+  let image = new Image({ url, folder, downloadedVersion, width, height, type, length });
 
   image.save((err, data) => {
         if (err) {
