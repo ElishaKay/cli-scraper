@@ -12,7 +12,9 @@
     "cheerio": "^1.0.0-rc.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "image-downloader": "^4.0.2",
     "mongoose": "^5.11.13",
+    "probe-image-size": "^6.0.0",
     "request": "^2.88.2"
   }
 }

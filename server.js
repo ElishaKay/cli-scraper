@@ -24,8 +24,8 @@ app.get('/:folder', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
   cli.launchCLI();
-   process.on('uncaughtException', function(err) {
-      console.log('Caught exception: ' + err);
-      cli.launchCLI();
-   });
+   // process.on('uncaughtException', function(err) {
+   //    console.log('Caught exception: ' + err);
+   //    cli.launchCLI();
+   // });
 })
