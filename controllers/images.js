@@ -14,7 +14,5 @@ exports.displayImages = (req, res, next) => {
                   }  
             }
         });
-    });
-
-    
+    }); 
 }
