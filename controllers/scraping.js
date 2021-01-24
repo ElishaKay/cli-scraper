@@ -26,39 +26,30 @@ const getImages = (host, pageURL, folder, body) =>{
     let $ = cheerio.load(body);
 
     $("img").each(async function(i, image) {
-       let imagePath = $(image).attr('src')
-       console.log('imagePath: ', imagePath)
-       let imageURL = imagePath;
-       if(!imagePath.includes('http')){
-          imageURL = 'https://'+ host+ imagePath;
-       }
+        let imagePath = $(image).attr('src')
+        console.log('imagePath: ', imagePath)
+        let imageURL = imagePath;
+        if(!imagePath.includes('http')){
+           imageURL = 'https://'+ host+ imagePath;
+        }
        
-       let timestamp = new Date().getTime();
-       let downloadPath = './downloads/'+folder;
+        let timestamp = new Date().getTime();
+        let downloadPath = './downloads/'+folder;
 
-       if (!fs.existsSync(downloadPath)){
+        if (!fs.existsSync(downloadPath)){
           fs.mkdirSync(downloadPath);
-       }
+        }
 
-       let size = await probe(imageURL);
-       console.log('size',size)
-       let {width, height, type, length} = size;
+        let size = await probe(imageURL);
+        console.log('size',size)
+        let {width, height, type, length} = size;
         
         let downloadedVersion = `/${folder}/${timestamp}.${type}`;    
         let imageFSPath = downloadPath +'/'+timestamp+'.'+type;
 
         console.log('imageFSPath: ',imageFSPath);
 
-        Image.find({url: imageURL}, (err, image)=>{
-          if(err){
-            console.log('err finding image', err)  
-          } else {
-            console.log('image',image)
-          }
-        })
-
         downloadImage(imageURL, imageFSPath, function(){
-          console.log('image File saved in FileSystem');
           saveImageToDB({url: imageURL, folder, downloadedVersion, width, height, type, length});
        });
     });
