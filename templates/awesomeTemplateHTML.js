@@ -23,7 +23,7 @@ exports.awesomeTemplateHTML = ({allFolders, images}) => {
 			        <br>
 			          <b>format</b>: ${image.type}
 		        </p>
-		        <a href="#">Take Me Back</a>
+		        <a href="#">To The Top</a>
 	      </li>
         `).join('');
 	}
