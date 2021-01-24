@@ -9,16 +9,13 @@ exports.awesomeTemplateHTML = (images) => {
 		          <figcaption><h3>Billions upon billions</h3></figcaption>
 		        </figure>
 		        <p>
-		          url: ${image.url}
-		        </p>
-		        <p>
-		          height: ${image.height}
-		        </p>
-		        <p>
-		          width: ${image.width}
-		        </p>
-		        <p>
-		          format: ${image.type}
+			          <b>url</b>: ${image.url}
+			        <br>
+			          <b>height</b>: ${image.height}
+			        <br>
+			          <b>width</b>: ${image.width}
+			        <br>
+			          <b>format</b>: ${image.type}
 		        </p>
 		        <a href="#">Visit Website</a>
 	      </li>
