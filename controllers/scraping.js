@@ -21,8 +21,6 @@ const getHTML = (pageURL, folder) => {
 }
 
 const getImages = (host, pageURL, folder, body) =>{
-    console.log('getImages func ran')   
-    let results = [];
     let $ = cheerio.load(body);
 
     $("img").each(async function(i, image) {
@@ -53,8 +51,6 @@ const getImages = (host, pageURL, folder, body) =>{
           saveImageToDB({url: imageURL, folder, downloadedVersion, width, height, type, length});
        });
     });
-
-    console.log(results);
 }
 
 const downloadImage = (uri, filename, callback)=>{
