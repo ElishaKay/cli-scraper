@@ -1,25 +1,16 @@
 const fs = require('fs');
+const Image = require('../models/image');
 const { awesomeTemplateCSS } = require('../templates/awesomeTemplateCSS');
 const { awesomeTemplateHTML } = require('../templates/awesomeTemplateHTML');
 
-function getFiles (dir, files_){
-    files_ = files_ || [];
-    var files = fs.readdirSync(dir);
-    for (var i in files){
-        var name = dir + files[i];
-        if (fs.statSync(name).isDirectory()){
-            getFiles(name, files_);
+exports.displayImages = (req, res, next) => {
+    Image.find({folder: req.params.folder}, function(err, imagesFromDB) {
+        if (err) {
+          console.log('error fetching images',err);
         } else {
-            files_.push(name);
+              if(imagesFromDB && imagesFromDB.length>0){
+                    res.send(awesomeTemplateCSS()+awesomeTemplateHTML(imagesFromDB));
+              }  
         }
-    }
-    return files_;
-}
-
-exports.displayImages = (folder) => {
-	if(folder!='favicon.ico'){
-		let imagesToDisplay = getFiles('./downloads/'+folder+'/');
-		console.log('imagesToDisplay',imagesToDisplay)
-		return awesomeTemplateCSS()+awesomeTemplateHTML(imagesToDisplay);
-	}
+    });
 }

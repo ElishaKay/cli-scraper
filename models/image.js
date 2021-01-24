@@ -3,6 +3,12 @@ const { ObjectId } = mongoose.Schema;
 
 const imageSchema = new mongoose.Schema(
     {
+        folder: {
+            type: String
+        },
+        downloadedVersion: {
+            type: String
+        },
         url: {
             type: String,
             index: true

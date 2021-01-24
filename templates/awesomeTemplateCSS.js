@@ -77,6 +77,7 @@ exports.awesomeTemplateCSS = () => {
 			.the-images > ul > li {
 			  border: 1px solid #E2E2E2;
 			  border-radius: .5rem;
+			  word-wrap: break-word;
 			}
 
 			.the-images > ul > li > figure {

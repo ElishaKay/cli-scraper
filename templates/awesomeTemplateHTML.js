@@ -1,13 +1,24 @@
 exports.awesomeTemplateHTML = (images) => {
+	console.log('images in html template', images);
+
 	const loadImages = () => {
-		return images.map((imageURL, i) => `
+		return images.map((image, i) => `
             <li>
 		        <figure>
-		          <img src="${imageURL.split('./downloads')[1]}" alt="a nice little image">
+		          <img src="${image.downloadedVersion}" alt="a nice little image">
 		          <figcaption><h3>Billions upon billions</h3></figcaption>
 		        </figure>
 		        <p>
-		          Made in the interiors of collapsing stars star stuff harvesting star light venture billions upon billions Drake Equation brain is the seed of intelligence?
+		          url: ${image.url}
+		        </p>
+		        <p>
+		          height: ${image.height}
+		        </p>
+		        <p>
+		          width: ${image.width}
+		        </p>
+		        <p>
+		          format: ${image.type}
 		        </p>
 		        <a href="#">Visit Website</a>
 	      </li>
