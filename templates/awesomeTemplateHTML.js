@@ -12,7 +12,6 @@ exports.awesomeTemplateHTML = ({allFolders, images}) => {
             <li>
 		        <figure>
 		          <img src="${image.downloadedVersion}" alt="a nice little image">
-		          <figcaption><h3>Billions upon billions</h3></figcaption>
 		        </figure>
 		        <p>
 			          <b>url</b>: ${image.url}
