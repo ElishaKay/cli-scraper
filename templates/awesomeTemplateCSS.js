@@ -89,20 +89,7 @@ exports.awesomeTemplateCSS = () => {
 			}
 
 			.the-images > ul > li > figure > img {
-			  width: 100%;
-			}
-
-			.the-images > ul > li > figure > figcaption {
-			  position: absolute;
-			  bottom: 0;
-			  background-color: rgba(0,0,0,.7);
-			  width: 100%;
-			}
-
-			.the-images > ul > li > figure > figcaption > h3 {
-			  color: white;
-			  padding: .75rem;
-			  font-size: 1.25rem;
+			  max-width: 120px;
 			}
 
 			.the-images > ul > li > p {
