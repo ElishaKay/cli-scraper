@@ -1,24 +1,19 @@
-"# cli-scraper" 
+<h1>Fetch & View</h1>
 
-Example Commands & Relevant Views:
+<img src="frontend.PNG">
 
-When you run:
+<br/>
 
-scrape https://google.com images
-
-The images will be available at:
-
-http://localhost:3000/images
-
-
+<h1>Example Commands & Relevant Views</h1>
 
 When you run:
 
-scrape https://google.com new-images
+scrape https://google.com google
 
 The images will be available at:
 
-http://localhost:3000/new-images
+http://localhost:3000/google
+
 
 
 When you run:

@@ -1,5 +1,11 @@
-exports.awesomeTemplateHTML = (images) => {
-	console.log('images in html template', images);
+exports.awesomeTemplateHTML = ({allFolders, images}) => {
+	console.log('allFolders in HTML', allFolders);
+
+	const loadOptions = () => {
+		return allFolders.map((folder, i) => `
+            <a href="/${folder}">${folder}</a>
+        `).join('');
+	}
 
 	const loadImages = () => {
 		return images.map((image, i) => `
@@ -9,18 +15,15 @@ exports.awesomeTemplateHTML = (images) => {
 		          <figcaption><h3>Billions upon billions</h3></figcaption>
 		        </figure>
 		        <p>
-		          url: ${image.url}
+			          <b>url</b>: ${image.url}
+			        <br>
+			          <b>height</b>: ${image.height}
+			        <br>
+			          <b>width</b>: ${image.width}
+			        <br>
+			          <b>format</b>: ${image.type}
 		        </p>
-		        <p>
-		          height: ${image.height}
-		        </p>
-		        <p>
-		          width: ${image.width}
-		        </p>
-		        <p>
-		          format: ${image.type}
-		        </p>
-		        <a href="#">Visit Website</a>
+		        <a href="#">To The Top</a>
 	      </li>
         `).join('');
 	}
@@ -31,10 +34,13 @@ exports.awesomeTemplateHTML = (images) => {
 		</head>
 		<main class="wrapper">
 		  <section class="hero">
-		    <h1>You thirsty?</h1>
+		    <h1>Need more data?</h1>
 		    <article>
-		      <p>Explore local the-images with just one click and stirred by starlight across the centuries light years great turbulent clouds circumnavigated paroxysm of global death.</p>
-		      <a href="#the-images">Browse The Data</a>
+		      <p>
+		      	Scrape the images of any url and make them available here!
+		      	After all, everybody needs data sometimes. 
+		      </p>
+		      ${loadOptions()}
 		    </article>
 		  </section>
 		  <section class="the-images" id="the-images">
