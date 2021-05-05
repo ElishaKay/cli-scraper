@@ -1,4 +1,3 @@
-const fs = require('fs');
 const Image = require('../models/image');
 const { awesomeTemplateCSS } = require('../templates/awesomeTemplateCSS');
 const { awesomeTemplateHTML } = require('../templates/awesomeTemplateHTML');
